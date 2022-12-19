@@ -2,7 +2,7 @@ import { createReadStream, createWriteStream } from 'fs';
 import { access } from 'fs/promises';
 import { createUnzip } from 'zlib';
 import { pipeline } from 'stream';
-import { OPERATION_FAILED_MESSAGE, printMessage } from '../index.js';
+import { OPERATION_FAILED_MESSAGE, FILE_DECOMPRESSED, printMessage } from '../index.js';
 
 export const decompress = async (sourcePath, destinationPath) => {
   const decompress = createUnzip();
@@ -18,10 +18,11 @@ export const decompress = async (sourcePath, destinationPath) => {
       destination,
       (err) => {
           if (err) {
-            printMessage(OPERATION_FAILED_MESSAGE);
+            throw new Error(OPERATION_FAILED_MESSAGE);
           }
       }
     );
+    printMessage(FILE_DECOMPRESSED);
   } catch(e) {
     printMessage(OPERATION_FAILED_MESSAGE);
   }  

@@ -1,6 +1,6 @@
 import fs, { rm } from 'fs';
 import { access, stat } from 'fs/promises';
-import { OPERATION_FAILED_MESSAGE } from '../index.js';
+import { OPERATION_FAILED_MESSAGE, FILE_MOVED, printMessage } from '../index.js';
 
 export const moveFile = async (sourcePath, destinationPath) => {
   try {
@@ -16,6 +16,7 @@ export const moveFile = async (sourcePath, destinationPath) => {
 
       })
     });
+    printMessage(FILE_MOVED);
   } catch (e) {
     throw new Error(OPERATION_FAILED_MESSAGE);
   }

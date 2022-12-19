@@ -7,6 +7,13 @@ const readLine = readline.createInterface({ input, output });
 let userName = 'Unknown User';
 export const INVALID_INPUT_MESSAGE = 'Invalid input';
 export const OPERATION_FAILED_MESSAGE = 'Operation failed';
+export const FILE_CREATED = 'File was created!';
+export const FILE_RENAMED = 'File was renamed';
+export const FILE_COPIED = 'File was copied';
+export const FILE_MOVED  = 'File was moved';
+export const FILE_REMOVED  = 'File was removed';
+export const FILE_COMPRESSED  = 'File was compressed';
+export const FILE_DECOMPRESSED  = 'File was decompressed';
 let currentPath = '';
 const fileOperationCommands = ['ls', 'mv', 'cat', 'add', 'rn', 'cp', 'compress', 'decompress'];
 
