@@ -65,7 +65,7 @@ readLine.on('line', async (input) => {
       currentPath = getUpDirectory(currentPath)
       printPath(currentPath);
     } else if (inputValues[0] === 'cd') {
-      currentPath = changeDirectory(currentPath, inputValues[1]);
+      currentPath = await changeDirectory(currentPath, inputValues[1]);
       printPath(currentPath);
     } else {
       printMessage(INVALID_INPUT_MESSAGE);
