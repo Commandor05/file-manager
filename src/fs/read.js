@@ -9,7 +9,7 @@ export const readFile = async (destinationFilePath) => {
 
     const readStream = fs.createReadStream(destinationFilePath, 'utf-8');
     readStream.on('data', chunk => stdout.write(chunk));
-
+    readStream.on('end', () => stdout.write('\n'));
   } catch(e) {
     throw new Error(OPERATION_FAILED_MESSAGE);
   }
