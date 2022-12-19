@@ -15,6 +15,7 @@ import { decompress } from './unzip.js';
 export const dispatchFileCommand = async (inputValues, currentPath) => {
   let sourcePath = '';
   let targetPath = '';
+  let fileName = '';
 
   try{
     switch (inputValues[0]) {
@@ -44,10 +45,8 @@ export const dispatchFileCommand = async (inputValues, currentPath) => {
           sourcePath = path.resolve(currentPath , inputValues[1]);
 
           let destination = path.resolve(currentPath , inputValues[2]);
-           
-          targetPath = inputValues[1].includes(sep)? 
-            path.join(destination, inputValues[1].split(sep).pop) :
-            path.join(destination, inputValues[1]);
+          fileName = path.parse(sourcePath).base;
+          targetPath = path.join(destination, fileName);
 
           await copyFile(sourcePath, targetPath); 
         } else {
@@ -60,9 +59,8 @@ export const dispatchFileCommand = async (inputValues, currentPath) => {
 
           let destination = path.resolve(currentPath , inputValues[2]);
            
-          targetPath = inputValues[1].includes(sep)? 
-            path.join(destination, inputValues[1].split(sep).pop) :
-            path.join(destination, inputValues[1]);
+          fileName = path.parse(sourcePath).base;
+          targetPath = path.join(destination, fileName);
           
           await moveFile(sourcePath, targetPath); 
         } else {
@@ -90,9 +88,9 @@ export const dispatchFileCommand = async (inputValues, currentPath) => {
       case 'compress':
         if (inputValues[1] && inputValues[2]) {
           sourcePath = path.resolve(currentPath , inputValues[1]);
-          let destination = path.resolve(currentPath , inputValues[2]);
+          targetPath = path.resolve(currentPath , inputValues[2]);
            
-          await compress(sourcePath, destination);
+          await compress(sourcePath, targetPath);
         } else {
           printMessage(INVALID_INPUT_MESSAGE);
         }
@@ -100,10 +98,9 @@ export const dispatchFileCommand = async (inputValues, currentPath) => {
       case 'decompress':
         if (inputValues[1] && inputValues[2]) {
           sourcePath = path.resolve(currentPath , inputValues[1]);
+          targetPath = path.resolve(currentPath , inputValues[2]);
 
-          let destination = path.resolve(currentPath , inputValues[2]);
-
-          await decompress(sourcePath, destination);  
+          await decompress(sourcePath, targetPath);  
         } else {
           printMessage(INVALID_INPUT_MESSAGE);
         }

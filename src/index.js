@@ -15,7 +15,7 @@ export const FILE_REMOVED  = 'File was removed';
 export const FILE_COMPRESSED  = 'File was compressed';
 export const FILE_DECOMPRESSED  = 'File was decompressed';
 let currentPath = '';
-const fileOperationCommands = ['ls', 'mv', 'cat', 'add', 'rn', 'cp', 'compress', 'decompress'];
+const fileOperationCommands = ['ls', 'mv', 'cat', 'add', 'rn', 'rm', 'cp', 'compress', 'decompress'];
 
 const sayHi = () => {
   const message = `Welcome to the File Manager, ${userName}!`;
