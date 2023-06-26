@@ -29,6 +29,7 @@ const fileOperationCommands = [
   "cp",
   "compress",
   "decompress",
+  "hash",
 ];
 
 const sayHi = () => {
