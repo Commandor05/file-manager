@@ -83,7 +83,7 @@ readLine.on("line", async (input) => {
     } else if (
       fileOperationCommands.some((comand) => comand === inputValues[0])
     ) {
-      dispatchFileCommand(inputValues, currentPath);
+      await dispatchFileCommand(inputValues, currentPath);
     } else if (inputValues[0] === "up") {
       currentPath = getUpDirectory(currentPath);
     } else if (inputValues[0] === "cd") {
