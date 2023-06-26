@@ -86,10 +86,8 @@ readLine.on("line", async (input) => {
       dispatchFileCommand(inputValues, currentPath);
     } else if (inputValues[0] === "up") {
       currentPath = getUpDirectory(currentPath);
-      printPath(currentPath);
     } else if (inputValues[0] === "cd") {
       currentPath = await changeDirectory(currentPath, inputValues[1]);
-      printPath(currentPath);
     } else {
       printMessage(INVALID_INPUT_MESSAGE);
     }
